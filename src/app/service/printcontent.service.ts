@@ -29,10 +29,8 @@ export class PrintContentService{
         this.printline.Init(this.maxlength);
         let header: string = "";
         header += this.printline.AppendCenter("*****");
-    
         return header;
       }
-    
     
       ContacInfo(): string {
         let info: string = "";
@@ -42,16 +40,8 @@ export class PrintContentService{
         return info;
       }
     
-      Contact(): string {
-        let customer: string = "";
-        
-          customer += this.LineSeparator();
- 
-        return customer;
-      }
       Title() {
         let title = "";
-    
          {
           title += this.printline.AppendCenter(ctrl.Data.Title) + "\n";
          {
@@ -62,14 +52,12 @@ export class PrintContentService{
         }
         return title;
       }
-    
-    
-    
+
       Item(): string {
         let itemsText: string = "";
         let quantityTotal: number | string = 0;
-        if (ctrl.Data.Items) {
-          ctrl.Data.Items.forEach((item: any) => {
+        if (ctrl.cart.Items) {
+          ctrl.cart.Items.forEach((item: any) => {
             quantityTotal += item.Quantity;
     
             let discount: string = item.Discount ? " - " + item.Discount + "%" : "";
@@ -80,14 +68,9 @@ export class PrintContentService{
     
             if (ctrl.Config) uom = ctrl.Config.PrintConfigInvoice.ItemsTable.UOMVisible ? item.Variant.UOMName : "";
             let qty: string = "";
-            if (uom == null || uom == "") {
+           {
               qty = item.Quantity + " " + price;
             }
-            else {
-              qty = item.Quantity + " " + uom + price;
-            }
-    
-    
     
             let total: string = "0";
             if (item.Total != undefined) {
@@ -104,8 +87,6 @@ export class PrintContentService{
                 itemsText += this.printline.AppendLine(qty + discount, total);
               }
             }
-            
-        
           });
           itemsText += this.LineSeparator();
           itemsText += this.printline.AppendTextRightLine("Qty", this.decimalPipe.transform(quantityTotal), ":");
@@ -178,12 +159,10 @@ export class PrintContentService{
     
         content += this.Header(); // Generate  Template Name & Address
         content += this.ContacInfo(); //Generate  Contact Info
-        content += this.Contact(); // Generate  Contact
         content += this.Title();
         content += this.Item; // Generate  Item
         content += this.Summary(); // Generate  For Summary Footer
-        content += this.Feed(1);
-    
+
         return content;
       }
     
