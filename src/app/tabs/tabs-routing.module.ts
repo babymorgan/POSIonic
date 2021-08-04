@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -8,32 +9,77 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-      },
-      {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
-      },
-      {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
+        path: 'payment',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../payment/payment.module').then(m => m.PaymentPageModule)
+          }
+
+        ]
+      }, {
+        path: 'payment-edit/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../payment/payment.module').then(m => m.PaymentPageModule)
+          }
+
+        ]
+      }, {
+        path: 'sales',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../sells/sells.module').then(m => m.SellsPageModule)
+          }
+
+        ]
+      }, {
+        path: 'sales-edit/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../sells/sells.module').then(m => m.SellsPageModule)
+          }
+
+        ]
+      }, {
+        path: 'feeds',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../feed/feed.module').then(m => m.FeedPageModule)
+          }
+        ]
+      }, {
+        path: 'sales-history',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../sales-history/sales-history.module').then(m => m.SalesHistoryPageModule)
+          }
+        ]
+      }, {
+        path: 'payment-history',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../payment-history/payment-history.module').then(m => m.PaymentHistoryPageModule)
+          }
+        ]
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/feeds',
     pathMatch: 'full'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }
