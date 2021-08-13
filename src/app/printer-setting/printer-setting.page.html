@@ -13,15 +13,10 @@
     </ion-item>
     </ion-list>
     <div>
-       
-    </div>
-    <ion-input type="text" placeholder="List Printer" [(ngModel)]="receipt.title" [ngModelOptions]="{standalone: true}">
-    </ion-input>
-  
-    <ion-input type="text" placeholder="Selected Printer" [(ngModel)]="receipt.customer" [ngModelOptions]="{standalone: true}">
-    </ion-input>
+      Selected Printer: {{selectedPrinter}}
+  </div>
 
-    <ion-button expand="block" color="success"  (click)="print()">
+    <ion-button expand="block" color="success">
     Save
     </ion-button>
 

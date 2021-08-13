@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PrintBluetoothService } from '../service/printer.service';
+import { Platform } from '@ionic/angular';
+import { PrintContentService } from '../service/printcontent.service';
 
 
 @Component({
@@ -8,9 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrinterSettingPage implements OnInit {
 
-  constructor() { }
+  bluetoothList: any[];
+  selectedPrinter:any;
 
-  ngOnInit() {
+  constructor(public platform: Platform, private printer: PrintBluetoothService, private contentService: PrintContentService ) { }
+
+  listPrinter() { 
+    this.printer.getBluetoothList()
+     .then(resp=>{
+      this.bluetoothList=resp;
+     
+  });
+}
+ngOnInit() {
+  this.listPrinter();
+  //this.printContent();
+ 
+}
+
+getBluetoothList(): void {
+  this.bluetoothList = [];
+
+  }
+
+  selectPrinter(macAddress)
+  {
+    this.selectedPrinter= macAddress;
   }
 
 }
