@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PrintpageComponent } from './printpage.component';
+import { PrinterSettingPage } from './printer-setting.page';
 
-describe('PrintpageComponent', () => {
-  let component: PrintpageComponent;
-  let fixture: ComponentFixture<PrintpageComponent>;
+describe('PrinterSettingPage', () => {
+  let component: PrinterSettingPage;
+  let fixture: ComponentFixture<PrinterSettingPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrintpageComponent ],
+      declarations: [ PrinterSettingPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PrintpageComponent);
+    fixture = TestBed.createComponent(PrinterSettingPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

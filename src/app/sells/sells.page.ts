@@ -7,7 +7,7 @@ import { cartItemModel, cartModel,invoiceStatus } from '../models/cart.model';
 import { ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { CustomerService } from '../service/customer.service';
-import { PrintBluetoothService } from '../service/printer.service';
+//import { PrintBluetoothService } from '../service/printer.service';
 
 
 @Component({
@@ -47,7 +47,8 @@ export class SellsPage implements OnInit {
 
 
 
-  constructor(private customerService: CustomerService ,private cashierService: SalesService, private paymentService:PaymentService, private route: ActivatedRoute, private modalController: ModalController, private alertController: AlertController, private storage: Storage, private printer:PrintBluetoothService) {
+  constructor(private customerService: CustomerService ,private cashierService: SalesService, private paymentService:PaymentService, private route: ActivatedRoute, private modalController: ModalController, private alertController: AlertController, private storage: Storage, 
+   ) {
 
     this.storage.get('user').then((result) => {
       this.user = JSON.parse(result)
@@ -316,44 +317,44 @@ export class SellsPage implements OnInit {
     this.cart.user_id = this.user_id;
     this.cart.payment_id = this.paymentMethod[0].id;
     
-    console.log(this.cart)
-    this.printReceipt()
-    //this.cashierService.SubmitCart(this.cart).subscribe(res => {
-    //  this.sellCompleteInfo = res.data;
-    //  let message = "Invoice #" + this.sellCompleteInfo.number + " is created successfully.";
-    //  let status = "Paid Invoice";
-    //  this.createSuccessMessage(message, status);
-    //}, async (err) => {
-    //  const alert = await this.alertController.create({
-    //    header: "Failed",
-    //    message: "Failed in creating invoice",
-    //    buttons: ['OK']
-    //  });
-    //})
+    //console.log(this.cart)
+    //this.printReceipt()
+    this.cashierService.SubmitCart(this.cart).subscribe(res => {
+      this.sellCompleteInfo = res.data;
+      let message = "Invoice #" + this.sellCompleteInfo.number + " is created successfully.";
+      let status = "Paid Invoice";
+      this.createSuccessMessage(message, status);
+    }, async (err) => {
+      const alert = await this.alertController.create({
+        header: "Failed",
+        message: "Failed in creating invoice",
+        buttons: ['OK']
+      });
+    })
   }
 
-  printReceipt(){
-    let item = this.cart.items
+//  printReceipt(){
+//    let item = this.cart.items
+//
+//      item.forEach(element => {
+//      let displayName = element.name
+//      let displayPrice = element.price
+//
+//    let separator  = "--------------------------------\n";
+//    let tanggal = "Tanggal        :\n";
+//    let noInvoice = "No Invoice   :"+ JSON.stringify(this.cart.date)+"\n";
+//    let customer = "Nama           :" + JSON.stringify(this.cart.contact_id) + "\n\n";
+//    let header = "    Item              Biaya\n";
+//    let items = "   "+JSON.stringify(displayName)+"          "+ JSON.stringify(displayPrice) + "\n\n"
+//    let total = "     Total         Rp. 9.000,-\n\n\n";
+//  
+//  this.content =  + tanggal + noInvoice + customer + separator + header + separator + item + separator + total;
+//
+//  console.log(this.content)
+//});
 
-      item.forEach(element => {
-      let displayName = element.name
-      let displayPrice = element.price
-
-    let separator  = "--------------------------------\n";
-    let tanggal = "Tanggal        :\n";
-    let noInvoice = "No Invoice   :"+ JSON.stringify(this.cart.date)+"\n";
-    let customer = "Nama           :" + JSON.stringify(this.cart.contact_id) + "\n\n";
-    let header = "    Item              Biaya\n";
-    let items = "   "+JSON.stringify(displayName)+"          "+ JSON.stringify(displayPrice) + "\n\n"
-    let total = "     Total         Rp. 9.000,-\n\n\n";
-  
-  this.content =  + tanggal + noInvoice + customer + separator + header + separator + item + separator + total;
-
-  console.log(this.content)
-});
-  
    // let invoicePage = this.content
    // console.log(invoicePage)
    //  this.printer.printBT(this.selectedPrinter,invoicePage,)
-    }
+    //}
 }

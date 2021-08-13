@@ -68,6 +68,15 @@ const routes: Routes = [
             loadChildren: () => import('../payment-history/payment-history.module').then(m => m.PaymentHistoryPageModule)
           }
         ]
+      },
+      {
+        path: 'printer-setting',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../printer-setting/printer-setting.module').then(m => m.PrinterSettingPageModule)
+          }
+        ]
       }
     ]
   },

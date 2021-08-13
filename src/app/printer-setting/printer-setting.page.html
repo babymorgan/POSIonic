@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Chose Printer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let item of bluetoothList" (click)="selectPrinter(item.id)">
+        
+    </ion-item>
+    </ion-list>
+    <div>
+       
+    </div>
+    <ion-input type="text" placeholder="List Printer" [(ngModel)]="receipt.title" [ngModelOptions]="{standalone: true}">
+    </ion-input>
+  
+    <ion-input type="text" placeholder="Selected Printer" [(ngModel)]="receipt.customer" [ngModelOptions]="{standalone: true}">
+    </ion-input>
+
+    <ion-button expand="block" color="success"  (click)="print()">
+    Save
+    </ion-button>
+
+</ion-content>

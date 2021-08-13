@@ -9,7 +9,7 @@ export class EnvirontmentService {
 
   constructor(private route: Router, private storage: Storage) { }
   getGeneralEnvironment() {
-    return "http://localhost:8080/api/"
+    return "http://core.talentia.id/api/"
   }
 
   GetChildEnvirontment() {
