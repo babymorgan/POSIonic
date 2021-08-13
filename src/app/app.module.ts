@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { DecimalPipe, DatePipe } from '@angular/common';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -38,7 +38,10 @@ import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
     },
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    BluetoothSerial
+    BluetoothSerial,
+    DecimalPipe,
+    DatePipe
+
 
   ],
   bootstrap: [AppComponent]

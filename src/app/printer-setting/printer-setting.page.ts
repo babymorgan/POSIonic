@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PrintBluetoothService } from '../service/printer.service';
 import { Platform } from '@ionic/angular';
 import { PrintContentService } from '../service/printcontent.service';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,8 +15,9 @@ export class PrinterSettingPage implements OnInit {
 
   bluetoothList: any[];
   selectedPrinter:any;
+  macAddress: any;
 
-  constructor(public platform: Platform, private printer: PrintBluetoothService, private contentService: PrintContentService ) { }
+  constructor(private router: Router ,public platform: Platform, private printer: PrintBluetoothService, private contentService: PrintContentService, private storage: Storage ) { }
 
   listPrinter() { 
     this.printer.getBluetoothList()
@@ -37,6 +40,14 @@ getBluetoothList(): void {
   selectPrinter(macAddress)
   {
     this.selectedPrinter= macAddress;
+    this.macAddress = macAddress
+  }
+
+  save(){
+  this.storage.set("printer",this.macAddress)
+  this.router.navigate(['/tabs/sells']);
   }
 
 }
+
+
