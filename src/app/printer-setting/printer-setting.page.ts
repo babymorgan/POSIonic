@@ -14,34 +14,31 @@ import { Router } from '@angular/router';
 export class PrinterSettingPage implements OnInit {
 
   bluetoothList: any = [];
-  selectedPrinter:any;
+  selectedPrinter: any;
   macAddress: any;
 
-  constructor(private router: Router ,public platform: Platform, private printer: PrintBluetoothService, private contentService: PrintContentService, private storage: Storage ) { }
+  constructor(private router: Router, public platform: Platform, private printer: PrintBluetoothService, private contentService: PrintContentService, private storage: Storage) { }
 
-ngOnInit(){
-this.listPrinter
-console.log(this.bluetoothList)
-}
+  ngOnInit() {
+    this.listPrinter
+    console.log(this.bluetoothList)
+  }
 
-listPrinter() { 
-  this.printer.getBluetoothList()
-   .then(resp=>{
-    this.bluetoothList=resp;
-    
-});
+  listPrinter() {
+    this.printer.getBluetoothList()
+      .then(resp => {
+        this.bluetoothList = resp;
+      });
+  }
 
-}
-
-  selectPrinter(macAddress)
-  {
-    this.selectedPrinter= macAddress;
+  selectPrinter(macAddress) {
+    this.selectedPrinter = macAddress;
     this.macAddress = macAddress
   }
 
-  save(){
-  this.storage.set("printer",this.macAddress)
-  this.router.navigate(['/tabs/sells']);
+  save() {
+    this.storage.set("printer", this.macAddress)
+    this.router.navigate(['/tabs/sells']);
   }
 
 }
