@@ -21,7 +21,11 @@ export class PrinterSettingPage implements OnInit {
 
   ngOnInit() {
     this.listPrinter
-    console.log(this.bluetoothList)
+  }
+
+
+getBluetoothList(): void {
+  this.bluetoothList = [];
   }
 
   listPrinter() {
