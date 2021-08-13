@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const SERVER_URL = 'http://core.talentia.id';
+export const SERVER_URL = 'https://core.talentia.id';
 
 /*
  * For easier debugging in development mode, you can import the following file
