@@ -35,7 +35,6 @@
     "@ionic/angular": "^5.5.2",
     "@ionic/storage-angular": "^3.0.6",
     "capacitor-bluetooth-serial": "0.0.4",
-    "cordova-android": "9.1.0",
     "cordova-plugin-bluetooth-serial": "^0.4.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
@@ -91,7 +90,8 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-bluetooth-serial": {}
     },
     "platforms": [
       "android"
