@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { BluetoothSerial } from "@ionic-native/bluetooth-serial/ngx";
-import { promise } from "protractor";
 import { PrintContentBody, PrintContentService } from "../service/printcontent.service";
 
 @Injectable({

@@ -34,6 +34,7 @@
     "@ionic-native/status-bar": "^5.34.0",
     "@ionic/angular": "^5.5.2",
     "@ionic/storage-angular": "^3.0.6",
+    "capacitor-bluetooth-serial": "0.0.4",
     "cordova-plugin-bluetooth-serial": "^0.4.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

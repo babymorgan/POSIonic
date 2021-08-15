@@ -24,10 +24,6 @@ export class PrinterSettingPage implements OnInit {
   }
 
 
-getBluetoothList(): void {
-  this.bluetoothList = [];
-  }
-
   listPrinter() {
     this.printer.getBluetoothList()
       .then(resp => {
